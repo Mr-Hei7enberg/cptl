@@ -56,6 +56,10 @@ body {
 
     &__services {}
 
+    // .page__reach
+
+    &__reach {}
+
     // .page__why
 
     &__why {}
@@ -288,6 +292,11 @@ body {
 
 .text-italic {
     font-style: italic;
+    /* 24/16 */
+}
+
+.text-bold {
+    font-weight: bold;
     /* 24/16 */
 }
 
@@ -1207,6 +1216,72 @@ body {
     }
 }
 
+// Reach ===================================================
+
+
+
+.reach {
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @media @tablet {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    @media @mobile {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    // .reach__container
+
+    &__container {}
+
+    // .reach__header
+
+    &__header {
+        margin-bottom: 28px;
+    }
+
+    // .reach__body
+
+    &__body {}
+
+    // .reach__text
+
+    &__text {
+        line-height: 1.5;
+        font-size: 18px;
+        color: @gray;
+
+        &:not(:last-child) {
+            margin-bottom: 33px;
+        }
+
+        @media (min-width: 768px) {}
+
+        @media @mobile {
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    // .reach__icons
+
+    &__icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+
+        // .reach__icon
+
+        &__icon {}
+    }
+}
+
 // how ==============================================
 
 .how {
@@ -1300,10 +1375,10 @@ body {
         flex: 0 0 38%;
         /* 500/1310 */
         overflow: hidden;
-        // border-radius: 0 68% 60% 60% /0 68% 50% 50%;
-        border-top-right-radius: 25vw;
-        border-bottom-left-radius: 25vw;
-        border-bottom-right-radius: 25vw;
+        // border-top-left-radius: 25vw;
+        // border-bottom-left-radius: 25vw;
+        // border-bottom-right-radius: 25vw;
+        clip-path: polygon(0 0, 64% 0%, 100% 18%, 100% 77%, 64% 100%, 0 100%);
 
         & img {
             max-width: 100%;
@@ -1784,7 +1859,7 @@ body {
         align-items: center;
         gap: 35px;
 
-        @media @mobile-sm {
+        @media @mobile {
             flex-direction: column-reverse;
         }
     }
@@ -1831,6 +1906,31 @@ body {
         &:hover {
             border: 2px solid @blue;
             transform: translateY(-3px);
+        }
+    }
+}
+
+.menu-footer {
+
+    // .menu-footer__list
+
+    &__list {
+        display: grid;
+        gap: 24px;
+    }
+
+    // .menu-footer__item
+
+    &__item {}
+
+    // .menu-footer__link
+
+    &__link {
+        color: @gray;
+        line-height: 1.4;
+
+        &:hover {
+            color: #fff;
         }
     }
 }
