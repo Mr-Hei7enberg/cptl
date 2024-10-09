@@ -227,22 +227,16 @@ if (document.querySelector('.testimonials__items')) {
         breakpoints: {
             // when window width is >= 320px
             320: {
-                slidesPerView: 1.5,
-                spaceBetween: 25
             },
             // when window width is >= 565px
             565: {
-                slidesPerView: 2.5,
-                spaceBetween: 25
             },
             // when window width is >= 767px
             767: {
-                slidesPerView: 3.5,
-                spaceBetween: 32
             },
             // when window width is >= 1199px
             1199: {
-                slidesPerView: 4.5,
+                slidesPerView: 1,
                 spaceBetween: 32
             }
         },
@@ -250,48 +244,6 @@ if (document.querySelector('.testimonials__items')) {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         }
-    });
-}
-
-// Works slider ======================================
-if (document.querySelector('.works__slider')) {
-    new Swiper('.works__slider', {
-        loop: true,
-        slidesPerView: 3,
-        autoplay: {
-            enabled: true,
-            delay: 8000,
-        },
-        breakpoints: {
-            // when window width is >= 320px
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 15
-            },
-            // when window width is >= 480px
-            480: {
-                slidesPerView: 2,
-                spaceBetween: 15
-            },
-            // when window width is >= 640px
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 15
-            },
-            // when window width is >= 991px
-            991: {
-                slidesPerView: 3,
-                spaceBetween: 32
-            }
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.works-swiper-pagination',
-            type: 'bullets',
-        },
     });
 }
 
