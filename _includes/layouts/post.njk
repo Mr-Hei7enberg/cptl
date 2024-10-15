@@ -1,0 +1,48 @@
+---js
+const layout = "layouts/base.njk";
+const cssFiles = ["/css/post.css"];
+const jsFiles = ["/js/common.js"];
+---
+<div class="wrapper">
+	<div class="page">
+		<article class="page__post post" data-section="post" data-section-type="long">
+			<div class="post__container" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
+				<h1 class="post__title">{{ title }}</h1>
+
+				<ul class="post__metadata">
+					<li class="post__date li-style-none">
+						<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+					</li>
+					{%- for tag in tags | filterTagList %}
+						{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+						<li class="li-style-none">
+							<a href="{{ tagUrl }}" class="post__tag text-underline">{{ tag }}</a>
+							{%- if not loop.last %}, {% endif %}
+						</li>
+					{%- endfor %}
+				</ul>
+
+				{{ content | safe }}
+
+				{%- if collections.posts %}
+					{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+					{%- set nextPost = collections.posts | getNextCollectionItem %}
+					{%- if nextPost or previousPost %}
+						<ul class="links-nextprev">
+							{%- if previousPost %}
+								<li class="links-nextprev-prev li-style-none">← Попередня стаття<br>
+									<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+								</li>
+							{% endif %}
+							{%- if nextPost %}
+								<li class="links-nextprev-next li-style-none">Читати далі →<br>
+									<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+								</li>
+							{% endif %}
+						</ul>
+					{%- endif %}
+				{%- endif %}
+			</div>
+		</article>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div class="modal fade modal-dialog-scrollable" id="modal_contact_me" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <button class="modal__close btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                <img class="modal__close-image" src="/img/modal/x-circle-fill.svg" data-close alt="close button">
+            </button>
+            <div class="modal__body">
+                <h3 class="modal__title">
+                    Замовити дзвінок
+                </h3>
+                <form id="callback-form" class="form" action="send-c.php" method="post">
+                    <div class="d-none justify-content-center align-items-center" id="spinner">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="input-tel">Телефон</label>
+                        <input class="form__input" type="tel" id="input-tel" name="tel" placeholder="+38(___)___-__-__">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="input-name">Ім'я або Назва компанії</label>
+                        <input class="form__input" type="text" id="input-name" name="name">
+                    </div>
+
+                    <div class="form__button">
+                        <button type="submit" class="btn" id="form_submit_button">Замовити</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+---js
+const layout = "layouts/base.njk";
+const title = "Блог";
+const description = "";
+const keywords = "";
+const cssFiles = ["/css/style.css"];
+const jsFiles = ["/js/common.js"];
+const eleventyNavigation = {
+key: "Archive",
+order: 2
+};
+---
+
+<section class="page__blog blog" data-section="blog" data-section-type="long">
+	<div class="blog__container">
+		<div class="blog__header header-main">
+			<div class="header-main__label">
+				Архів
+			</div>
+			<h1 class="header-main__title">
+				Архів
+			</h1>
+			<div class="header-main__body">
+				<div class="header-main__text">
+					<p>
+						Корисні статті, простими словами. Даємо інформацію та відповіді на найпоширеніші запитання.
+						Останні {{ latestPostsCount }} пост{% if latestPostsCount != 1 %}и{% endif %}.
+					</p>
+				</div>
+			</div>
+		</div>
+		{% set postslist = collections.posts %}
+		{% include "postslist.njk" %}
+	</div>
+</section>

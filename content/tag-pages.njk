@@ -1,0 +1,33 @@
+---js
+const layout = "layouts/base.njk";
+const pagination = {
+data: "collections",
+size: 1,
+alias: "tag",
+filter: ["all", "posts"],
+// addAllPagesToCollections: true,
+};
+
+const eleventyExcludeFromCollections = true;
+
+const eleventyComputed = {
+title: "Позначено '{{ tag }}'",
+permalink: function(data) {
+return `/tags/${this.slugify(data.tag)}/`;
+}
+};
+const cssFiles = ["/css/style.css"];
+const jsFiles = ["/js/common.js"];
+---
+<section class="page__blog blog" data-section="blog" data-section-type="long">
+	<div class="blog__container">
+		<div class="blog__header header-main">
+			<h1 class="header-main__label">
+				{{ tag }}
+			</h1>
+		</div>
+		{% set postslist = collections[ tag ] %}
+		{% include "postslist.njk" %}
+		<p><br>Подивитися <a href="tags.njk">всі теги</a>.</р>
+	</div>
+</section>

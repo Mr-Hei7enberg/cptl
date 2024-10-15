@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title or metadata.title }}</title>
+	<meta name="description" content="{{ description or metadata.description }}">
+	<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
+	{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site! #}
+	{#-
+	<meta name="generator" content="{{ eleventy.generator }}"> #}
+
+	{#-
+	Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
+	1. CSS:
+	* Add to a per-page bundle using `{% css %}{% endcss %}`
+	* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+	2. Or for JavaScript:
+	* Add to a per-page bundle using `{% js %}{% endjs %}`
+	* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
+	3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+	#}
+
+	{#- Add an arbitrary string to the bundle #}
+	{%- css %}/* This is an arbitrary CSS string added to the bundle */{% endcss %}
+	{#- Add the contents of a file to the bundle #}
+	{%- css %}{% include "public/css/index.css" %}{% endcss %}
+	{#- Or you can add from node_modules #}
+	{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+
+	{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+	{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+	{#-
+	<link rel="stylesheet" href="{% getBundleFileUrl " css" %}"> #}
+
+	{#- Add the heading-anchors web component to the JavaScript bundle #}
+	{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="/favicon/favicon-48x48.png" sizes="48x48" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="/css/aos.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="/css/nprogress.css">
+	<!-- Add specific styles -->
+	{%- for file in cssFiles | filterTagList %}
+	<link rel="stylesheet" href="{{ file }}">
+	{%- endfor %}
+
+	<!-- Google Tag Manager -->
+
+	<!-- End Google Tag Manager -->
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Header -->
+		{% include "partials/header.njk" %}
+		<main id="skip" class="page">
+			<!-- <heading-anchors></heading-anchors> -->
+			{{ content | safe }}
+
+		</main>
+
+		<!-- Footer -->
+		{% include "partials/footer.njk" %}
+	</div>
+
+	<!-- Modal contact -->
+	{% include "partials/modal_contact.njk" %}
+
+	<!-- Callback button -->
+	{% include "partials/callback_button.njk" %}
+
+
+	<!-- Addons -->
+	<script src="/js/inputmask.min.js"></script>
+	<script src="/js/just-validate.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/nprogress.js"></script>
+	<!-- Add specific js files -->
+	{%- for file in jsFiles | filterTagList %}
+	<script src="{{ file }}"></script>
+	{%- endfor %}
+	<!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
+</body>
+
+</html>

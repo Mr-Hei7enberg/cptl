@@ -1,0 +1,13 @@
+---js
+const layout = "layouts/base.njk";
+const cssFiles = ["/css/style.css"];
+const jsFiles = ["/js/common.js"];
+---
+
+<div class="wrapper">
+  <div class="page">
+    <div class="page__not-found not-found">
+      <div class="not-found__container">{{ content | safe }}</div>
+    </div>
+  </div>
+</div>

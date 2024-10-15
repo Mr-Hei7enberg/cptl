@@ -1,0 +1,17 @@
+---js
+const layout = "layouts/home.njk";
+const eleventyNavigation = {
+key: "Home",
+order: 1
+};
+const numberOfLatestPostsToShow = 3;
+---
+{% include "sections/main.njk" %}
+{% include "sections/clients.njk" %}
+{% include "sections/services.njk" %}
+{% include "sections/why.njk" %}
+{% include "sections/reach.njk" %}
+{% include "sections/how.njk" %}
+{% include "sections/testimonials.njk" %}
+{% include "sections/blog.njk" %}
+{% include "sections/contacts.njk" %}

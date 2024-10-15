@@ -1,0 +1,41 @@
+<div class="blog__items" data-aos="fade-up" data-aos-delay="300" data-aos-offset="0">
+	{% for post in postslist | reverse %}
+	<a href="{{ post.url }}" class="blog__item item-blog">
+		<div class="item-blog__header">
+			<div class="item-blog__image">
+				{% set previewImgPath = [post.url, post.data.previewImgPath] | join %}
+				{% if post.data.previewImgPath %}
+				<img src="{{ previewImgPath }}" alt="{{post.data.title}}">
+				{% else %}
+				<img src="/img/placeholder.svg" alt="placeholder">
+				{% endif %}
+			</div>
+			{% if post.data.tags.length > 1 %}
+			<div class="item-blog__category">
+				{% for tag in post.data.tags | filterTagList %}
+				#{{tag}}
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<div class="item-blog__body">
+			<div class="item-blog__date">
+				<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date |
+					readableDate("dd LLL yyyy")
+					}}</time>
+			</div>
+			<h3 class="item-blog__title">
+				{% if post.data.title %}{{ post.data.title }}
+				{% else %}
+				<code>{{ post.url }}</code>
+				{% endif %}
+			</h3>
+			<div class="item-blog__text text">{% excerpt post %}...</div>
+			<div class="item-blog__link">Читати зараз
+				{# <img src="/img/blog/arrow-right.svg" alt="arrow right" class="item-blog__arrow"> #}
+				<div class="item-blog__arrow">→</div>
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</div>

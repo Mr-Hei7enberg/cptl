@@ -1,0 +1,27 @@
+{% set postsCount = collections.posts | length %}
+{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
+{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+
+<section class="page__blog blog" id="blog" data-section="blog" data-section-type="long">
+    <div class="blog__container">
+        <div class="blog__header header-main">
+            <div class="header-main__label">
+                Блог
+            </div>
+            <h2 class="header-main__title">
+                Читайте наші <br> статті та новини
+            </h2>
+            <div class="header-main__body">
+                <div class="header-main__text">
+                    <p>
+                        Корисні статті, простими словами. Даємо інформацію та відповіді на найпоширеніші запитання. Останні {{ latestPostsCount }} пост{% if latestPostsCount != 1 %}и{% endif %}.
+                    </p>
+                </div>
+                <div class="header-main__actions">
+                    <a href="/blog/" class="header-main__button button">Всі пости ({{ postsCount }})</a>
+                </div>
+            </div>
+        </div>
+        {% include "postslist.njk" %}
+    </div>
+</section>

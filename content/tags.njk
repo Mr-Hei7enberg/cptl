@@ -1,0 +1,24 @@
+---js
+const layout = "layouts/base.njk";
+const title = "Всі теги";
+const description = "";
+const keywords = "";
+const cssFiles = ["/css/style.css"];
+const jsFiles = ["/js/common.js"];
+---
+
+<section class="page__blog blog" data-section="blog" data-section-type="long">
+	<div class="blog__container">
+		<div class="blog__header header-main">
+			<h1 class="header-main__label">
+				Теги
+			</h1>
+		</div>
+		<ul>
+			{% for tag in collections | getKeys | filterTagList %}
+			{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+			<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
